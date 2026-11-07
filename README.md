@@ -123,3 +123,5 @@ Work in progress...
 * Reverse engineering data adapted from the **Spyro: Year of the Dragon** decompile project.
 * Visit the decompile repository on [GitHub](https://github.com/TheMobyCollective/spyro-3).
 * Special thanks to **The Moby Collective** for their work on the Spyro decompilation efforts!
+* GPLV3 LICENSE.md copied from the **Markdown Licenses** [GitHub repository](https://github.com/IQAndreas/markdown-licenses/).
+* Special thanks to **IQAndreas** and the **[Free Software Foundation](https://www.fsf.org/)**
