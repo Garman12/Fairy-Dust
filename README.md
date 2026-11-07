@@ -1,10 +1,10 @@
-# ovoid-world
+# Fairy Dust
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square)](#)
 [![Java Version](https://img.shields.io/badge/java-17%2B-blue.svg?style=flat-square)](#)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-Internal dev space for the *Spyro: Year of the Dragon* save editor and binary manipulation toolchain.
+*Spyro: Year of the Dragon* save editor and binary manipulation toolchain.
 
 ---
 
@@ -25,11 +25,11 @@ Internal dev space for the *Spyro: Year of the Dragon* save editor and binary ma
 
 ## Introduction
 
-**ovoid-world** is a save file editor and binary utility suite designed for parsing, modifying, and rebuilding PlayStation (*Spyro: Year of the Dragon*) memory card slot data. It provides zero-overhead binary data mapping, dynamic checksum recalculation, and a planned graphical interface to inspect and modify game progress safely.
+**Fairy Dust** is a save file editor and binary utility suite designed for parsing, modifying, and rebuilding PlayStation (*Spyro: Year of the Dragon*) memory card slot data. It provides zero-overhead binary data mapping, dynamic checksum recalculation, and a planned graphical interface to inspect and modify game progress safely.
 
 **Key Goals:**
-* 1:1 mapping of memory card save slots (`SaveSlot`).
-* Robust validation and auto-recalculation of checksums (`SaveTools`).
+* 1:1 mapping of memory card save slots.
+* Robust validation and auto-recalculation of checksums.
 * Inspection and modification of inventory, level completion flags, minigame high scores, and ACT difficulty tables.
 
 ---
@@ -58,7 +58,7 @@ Work in progress...
 ### Planned Features
 * **Automatic Checksum Recalculation:** Recomputes and writes new checksums automatically during save operations.
 * **Automatic Format Detection:** Detects memory card headers vs. single save slot dumps.
-* **Cross-Format Conversion:** Convert between raw memory card dumps (`.mcd`/`.gme`) and slot saves (`.BAC0`).
+* **Cross-Format Conversion:** Convert between raw memory card dumps (`.mcd`/`.gme`) and slot saves.
 * **Side-by-Side Hex Highlighting & Syncing:** Real-time hex editor tied to GUI fields.
 * **Snapshot & Backup Manager:** Automatic revision history to prevent save corruption.
 * **Save Diff & Comparison Tool:** Compare two save states field-by-field.
