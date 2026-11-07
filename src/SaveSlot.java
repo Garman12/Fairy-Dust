@@ -1,10 +1,169 @@
+/**
+ * Represents a single native save slot data structure for Spyro: Year of the Dragon.
+ * <p>
+ * Maps directly to the low-level byte layout used by the PlayStation memory card format.
+ * Includes nested classes for progress tracking flags, gem toll structures, and Moneybags state.
+ * </p>
+ */
 public class SaveSlot {
+    /**
+     * Offset 0x00: Save identifier counter. Increments every save write.
+     */
+    public int saveId;
+    /**
+     * Offset 0x04: File ID identifier preserved per save slot.
+     */
+    public byte fileId;
+    /**
+     * Offset 0x05: Current active level ID.
+     */
+    public byte currentLevel;
 
+    // --- Save Data Structure Fields ---
+    /**
+     * Offset 0x06: Remaining life count.
+     */
+    public byte lives;
+    /**
+     * Offset 0x07: Reserved byte padding.
+     */
+    public byte pad1;
+    /**
+     * Offset 0x08: Visited levels collection bitmask array (40 levels).
+     */
+    public byte[] visitedLevels = new byte[40];
+    /**
+     * Offset 0x30: Gem/item bitmasks array per level (40 levels x 32 bytes).
+     */
+    public byte[][] collections = new byte[40][32];
+    /**
+     * Offset 0x530: Gem totals collected per level.
+     */
+    public short[] gemTotals = new short[40];
+    /**
+     * Offset 0x580: Dragon egg collection bitmasks per level.
+     */
+    public byte[] eggs = new byte[40];
+    /**
+     * Offset 0x5A8: Moneybags gem toll status data structure (Size: 0x30).
+     */
+    public MoneybagsData moneybagsData = new MoneybagsData();
+    /**
+     * Offset 0x5D8: Story and objective completion progress flags.
+     */
+    public ProgressFlags progressFlags = new ProgressFlags();
+    /**
+     * Offset 0x624: Dialogue bitmask array for character interactions.
+     */
+    public byte[] dialogueBitmaskArray = new byte[40];
+    /**
+     * Offset 0x64C: Internal unknown runtime state value.
+     */
+    public int unk_8006c5d0;
+    /**
+     * Offset 0x650: Player death count accumulator.
+     */
+    public int deathCount;
+    /**
+     * Offset 0x654: Internal unknown runtime state value.
+     */
+    public int unk_8006c710;
+    /**
+     * Offset 0x658: Adaptive Difficulty Tuning (ACT) integer value.
+     */
+    public int difficulty;
+    /**
+     * Offset 0x65C: ACT high-difficulty thresholds per egg.
+     */
+    public byte[][] actMetThresholds = new byte[40][6];
+    /**
+     * Offset 0x74C: ACT performance metrics.
+     */
+    public byte[][] actPerformance = new byte[40][6];
+    /**
+     * Offset 0x83C: Speedway trial completion flags.
+     */
+    public byte[] speedwayTrialsComplete = new byte[4];
+    /**
+     * Offset 0x840: Speedway trial record times.
+     */
+    public int[] speedwayTrialRecords = new int[4];
+    /**
+     * Offset 0x850: Speedway race completion flags.
+     */
+    public byte[] speedwayRacesComplete = new byte[4];
+    /**
+     * Offset 0x854: Speedway race record times.
+     */
+    public int[] speedwayRaceRecords = new int[4];
+    /**
+     * Offset 0x864: Skateboarding high score records.
+     */
+    public int[] skateRecords = new int[4];
+    /**
+     * Offset 0x874: Skill point achievement flags (20 points total).
+     */
+    public byte[] skillPoints = new byte[20];
+    /**
+     * Offset 0x888: Reserved padding byte.
+     */
+    public byte pad2;
+    /**
+     * Offset 0x889: Active camera mode (1 = active).
+     */
+    public byte activeCam;
+    /**
+     * Offset 0x88A: Controller vibration setting toggle (1 = enabled).
+     */
+    public byte vibrationOn;
+    /**
+     * Offset 0x88B: Character voices audio setting (1 = enabled).
+     */
+    public byte voicesOn;
+    /**
+     * Offset 0x88C: Sound FX volume level setting.
+     */
+    public byte soundVolume;
+    /**
+     * Offset 0x88D: Music volume level setting.
+     */
+    public byte musicVolume;
+    /**
+     * Offset 0x88E: Speaker output mode (1 = Stereo, 0 = Mono).
+     */
+    public byte stereoSpeaker;
+    /**
+     * Offset 0x88F: Extended structure padding (109 bytes).
+     */
+    public byte[] pad3 = new byte[109];
+    /**
+     * Offset 0x8FC: Checksum sum value stored at the end of the save slot byte layout.
+     */
+    public int checksum;
+
+    /**
+     * Parses a raw save file byte array and populates the fields of this instance.
+     *
+     * @param data Raw byte array representing a single save slot block.
+     */
+    public void parseByteArray(byte[] data) {
+        this.saveId = SaveTools.bytesToInt(data, 0, false);
+        // TODO: Finish parsing remaining binary fields into their respective properties
+    }
+
+    public void setChecksum() {
+        // TODO: Add a method to calculate and assign the internal checksum variable
+    }
+
+    /**
+     * Bit-flag container representing overall story progression, level unlocking states,
+     * character state flags, and milestone flags.
+     */
     public static class ProgressFlags {
         public byte lvl10_HunterStart;
         public byte lvl10_Bianca;
         public byte lvl10_TikiEnteredPortal;
-        public byte addMoneybagsGemsToTotal; // unused under normal means
+        public byte addMoneybagsGemsToTotal; // Unused under normal means
         public byte lvl31_Bentley;
         public byte lvl11_Sheila;
         public byte lvl13_SgtByrd;
@@ -51,7 +210,7 @@ public class SaveSlot {
         public byte[] lvl50_Submarines = new byte[7];
         public byte[] lvl50_UFOs = new byte[7];
         public byte[] lvl50_Thieves = new byte[5];
-        public byte lvl46_Agent9ExtraDialogue; // unused under normal means
+        public byte lvl46_Agent9ExtraDialogue; // Unused under normal means
         public byte lvl10_ZoeAP;
         public byte lvl63_BiancaStrikesBack;
         public byte lvl65_SpikeIsBorn;
@@ -63,11 +222,27 @@ public class SaveSlot {
         public byte lvl74_TheEnd;
     }
 
+    //TODO: create a default constructor
+    //TODO: create a constructor which accepts a byte array as an argument to run the
+    // parseByteArray() and fill in the fields.
+
+    /**
+     * Struct tracking gem costs and payment status for Moneybags interactions.
+     */
     public static class GemToll {
+        /**
+         * Total gem toll amount required.
+         */
         public short value;
+        /**
+         * Amount of gems paid so far.
+         */
         public short paid;
     }
 
+    /**
+     * Collection of all Moneybags toll checkpoints across the game world.
+     */
     public static class MoneybagsData {
         public GemToll level_12 = new GemToll();
         public GemToll level_23 = new GemToll();
@@ -82,47 +257,5 @@ public class SaveSlot {
         public GemToll level_31 = new GemToll();
         public GemToll level_41 = new GemToll();
     }
-
-    // SaveData Fields
-    public int saveId;                        // 0, for checking if the memory card has changed? Changed every save
-    public byte fileId;              // 4, for checking if the memory card has changed? Preserved per save file
-    public byte currentLevel;        // 5
-    public byte lives;               // 6
-    public byte pad1;                         // 7, seems to be unused
-    public byte[] visitedLevels = new byte[40];   // 8
-    public byte[][] collections = new byte[40][32]; // 30, bitmasks e.g. for gems etc., 8 ints per level
-    public short[] gemTotals = new short[40];      // 530
-    public byte[] eggs = new byte[40];            // 580, bitmasks for eggs
-    public MoneybagsData moneybagsData = new MoneybagsData();       // 5A8 // size 0x30
-    public ProgressFlags progressFlags = new ProgressFlags();       // 5D8
-    public byte[] dialogueBitmaskArray = new byte[40];     // 624, is this even used?
-    public int unk_8006c5d0;                  // 64C
-    public int deathCount;                    // 650, not sure if this is ever actually used
-    public int unk_8006c710;                  // 654
-    public int difficulty;                    // 658, the value, rather than the easy/medium/hard
-    public byte[][] actMetThresholds = new byte[40][6];   // 65C, high difficulty thresholds per egg
-    public byte[][] actPerformance = new byte[40][6];     // 74C, for the ACT
-    public byte[] speedwayTrialsComplete = new byte[4]; // 83C
-    public int[] speedwayTrialRecords = new int[4];             // 840
-    public byte[] speedwayRacesComplete = new byte[4];  // 850
-    public int[] speedwayRaceRecords = new int[4];        // 854
-    public int[] skateRecords = new int[4];               // 864
-    public byte[] skillPoints = new byte[20];     // 874
-    public byte pad2;                         // 888, ?? unused??
-    public byte activeCam;           // 889, active if 1
-    public byte vibrationOn;         // 88A, on if 1
-    public byte voicesOn;            // 88B, on if 1
-    public byte soundVolume;         // 88C
-    public byte musicVolume;         // 88D
-    public byte stereoSpeaker;       // 88E, stereo if 1
-    public byte[] pad3 = new byte[109];                    // 88F, ???
-    public int checksum;                      // 8FC
-
-    public void parseByteArray(byte[] data){
-        byte[] saveIdBytes = new byte[4];
-        this.saveId = SaveTools.bytesToInt(data, 0, false);
-        //TODO: finish this parsing function
-    }
-    //TODO: add a function which returns all the fields in the save slot as a byte array
-    //TODO: add a function which checksums the fields in the save slot and writes it to the save slot's checksum variable.
+    // TODO: Add a method to serialize all instance fields back into a raw byte array
 }
