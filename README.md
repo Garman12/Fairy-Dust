@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square)](#)
 [![Java Version](https://img.shields.io/badge/java-17%2B-blue.svg?style=flat-square)](#)
-[![License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](#)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 Internal dev space for the *Spyro: Year of the Dragon* save editor and binary manipulation toolchain.
 
