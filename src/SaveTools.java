@@ -1,6 +1,3 @@
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -31,7 +28,7 @@ public class SaveTools {
      * @return Byte array containing the raw file data.
      * @throws RuntimeException If an I/O error occurs or the file size does not match {@link #SAVE_FILE_SIZE}.
      */
-    public static byte @NotNull [] saveToBytes(@NotNull File saveData) {
+    public static byte[] saveToBytes(File saveData) {
         byte[] output;
         try {
             output = Files.readAllBytes(saveData.toPath());
@@ -68,8 +65,7 @@ public class SaveTools {
      * @param data Byte array representing the save slot raw memory block.
      * @return Calculated integer checksum.
      */
-    @Contract(pure = true)
-    public static int checksumSaveSlotBytes(byte @NotNull [] data) {
+    public static int checksumSaveSlotBytes(byte[] data) {
         int sum = 0;
         for (int i = 0; i < data.length - 4; i++) {
             sum += (data[i] & 0xFF); // Handle unsigned byte conversion in Java

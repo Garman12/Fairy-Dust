@@ -1,8 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;last_opened_file_path&quot;: &quot;/home/garrick/Projects/java/2026FA/CH3---Set-Operations&quot;
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fd995c25-266a-4c6f-a056-3f5242ac7bd4" name="Changes" comment="Regenerated Intelij-IDEA config files.&#10;Renamed the folder containing the test saves to a more sane name">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SaveSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SaveSlot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SaveTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SaveTools.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_PUSH_TARGETS">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <list>
+              <push-target source-branch="master" target-branch="master" target-remote="github" />
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0000000000000002" />
+      <entry key="S10" value="1.000000021939121" />
+      <entry key="S30" value="1.0061021912222352" />
+      <entry key="S60" value="1.1718175154691286" />
+      <entry key="M2" value="2.0820989141540216" />
+      <entry key="M5" value="5.479924454834133" />
+      <entry key="M10" value="14.30828367491671" />
+      <entry key="M15" value="24.567809089919372" />
+      <entry key="M30" value="47.85012622916686" />
+      <entry key="H1" value="69.68577101991548" />
+      <entry key="H2" value="84.88821511092878" />
+      <entry key="H4" value="93.8946835396373" />
+      <entry key="D1" value="102.23367279159591" />
+      <entry key="W1" value="103.74557635202318" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="9.642470257113813E-155" />
+      <entry key="S2" value="4.9426727799372935E-39" />
+      <entry key="S5" value="8.73177541669457E-16" />
+      <entry key="S10" value="5.07158424241048E-8" />
+      <entry key="S30" value="0.0076838530426596285" />
+      <entry key="S60" value="0.15179293112723843" />
+      <entry key="M2" value="0.6792023327371802" />
+      <entry key="M5" value="2.0620012358139523" />
+      <entry key="M10" value="4.396489410605907" />
+      <entry key="M15" value="6.342174305851448" />
+      <entry key="M30" value="9.766960056230362" />
+      <entry key="H1" value="12.409955993910483" />
+      <entry key="H2" value="14.066355656033604" />
+      <entry key="H4" value="14.995597037361412" />
+      <entry key="D1" value="15.827110666029643" />
+      <entry key="W1" value="15.975163440306318" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="9.238844206304644E-4" />
+      <entry key="MS500" value="0.24724272909523287" />
+      <entry key="S2" value="0.7051489802421947" />
+      <entry key="S5" value="0.8695856269997525" />
+      <entry key="S10" value="0.93251581586385" />
+      <entry key="S30" value="0.990141608996298" />
+      <entry key="S60" value="1.3045726038056271" />
+      <entry key="M2" value="2.7354304998573333" />
+      <entry key="M5" value="7.512170729357463" />
+      <entry key="M10" value="18.67365215349795" />
+      <entry key="M15" value="30.87984104513127" />
+      <entry key="M30" value="57.59339197186917" />
+      <entry key="H1" value="82.0804341734519" />
+      <entry key="H2" value="98.94582351294984" />
+      <entry key="H4" value="108.88559501981582" />
+      <entry key="D1" value="118.05995571331741" />
+      <entry key="W1" value="119.7206203482246" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3LnuSeUDvql6vX4NUSqk1wZvVLA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/garrick/Projects/java/ovoid-world",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-ac68fc9d2b05-intellij.indexing.shared.core-IU-263.7307.200" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fd995c25-266a-4c6f-a056-3f5242ac7bd4" name="Changes" comment="" />
+      <created>1794102156143</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1794102156143</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Regenerated Intelij-IDEA config files.&#10;Renamed the folder containing the test saves to a more sane name" />
+    <option name="LAST_COMMIT_MESSAGE" value="Regenerated Intelij-IDEA config files.&#10;Renamed the folder containing the test saves to a more sane name" />
+  </component>
 </project>
