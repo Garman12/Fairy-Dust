@@ -1,3 +1,5 @@
+import java.nio.ByteBuffer;
+
 /**
  * Represents a single native save slot data structure for Spyro: Year of the Dragon.
  * <p>
@@ -5,7 +7,10 @@
  * Includes nested classes for progress tracking flags, gem toll structures, and Moneybags state.
  * </p>
  */
+
 public class SaveSlot {
+    public static final int SLOT_SIZE = 900; //TODO: calculate the size of a slot in bytes!
+
     /**
      * Offset 0x00: Save identifier counter. Increments every save write.
      */
@@ -147,8 +152,47 @@ public class SaveSlot {
      * @param data Raw byte array representing a single save slot block.
      */
     public void parseByteArray(byte[] data) {
-        this.saveId = SaveTools.bytesToInt(data, 0, false);
-        // TODO: Finish parsing remaining binary fields into their respective properties
+        this.saveId = ByteBuffer.wrap(data, 0, 4).getInt();
+        this.fileId = data[0x04];
+        this.currentLevel = data[0x05];
+        this.lives = data[0x06];
+        this.pad1 = data[0x07];
+        this.visitedLevels = ByteBuffer.wrap(data, 0x08, 40).array();
+        for (int levelIndex = 0; levelIndex < 40; levelIndex++) { // per level fields
+            int collectionOffset = 0x30 + (0x20 * levelIndex);
+            this.collections[levelIndex] = ByteBuffer.wrap(data, collectionOffset, 0x20).array();
+            int gemTotalOffset = 0x530 + (0x02 * levelIndex);
+            this.gemTotals[levelIndex] = ByteBuffer.wrap(data, gemTotalOffset, 0x02).getShort();
+            int eggOffset = 0x580 + levelIndex;
+            this.eggs[levelIndex] = data[eggOffset];
+        }
+        /* TODO: Finish parsing remaining byte data into its corresponding class field.
+        *   Unfinished fields below.
+        */
+        this.moneybagsData = new MoneybagsData(); // Offset 0x5A8: Moneybags gem toll status data structure (Size: 0x30).
+        this.progressFlags = new ProgressFlags(); // Offset 0x5D8: Story and objective completion progress flags.
+        this.dialogueBitmaskArray = new byte[40]; // Offset 0x624: Dialogue bitmask array for character interactions.
+        this.unk_8006c5d0 = 0x0; // Offset 0x64C: Internal unknown runtime state value.
+        this.deathCount = 0x0; // Offset 0x650: Player death count accumulator.
+        this.unk_8006c710 = 0x0; // Offset 0x654: Internal unknown runtime state value.
+        this.difficulty = 0x0; // Offset 0x658: Adaptive Difficulty Tuning (ACT) integer value.
+        this.actMetThresholds = new byte[40][6]; // Offset 0x65C: ACT high-difficulty thresholds per egg.
+        this.actPerformance = new byte[40][6]; // Offset 0x74C: ACT performance metrics.
+        this.speedwayTrialsComplete = new byte[4]; // Offset 0x83C: Speedway trial completion flags.
+        this.speedwayTrialRecords = new int[4]; // Offset 0x840: Speedway trial record times.
+        this.speedwayRacesComplete = new byte[4]; // Offset 0x850: Speedway race completion flags.
+        this.speedwayRaceRecords = new int[4]; // Offset 0x854: Speedway race record times.
+        this.skateRecords = new int[4]; // Offset 0x864: Skateboarding high score records.
+        this.skillPoints = new byte[20]; // Offset 0x874: Skill point achievement flags (20 points total).
+        this.pad2 = 0x0; // Offset 0x888: Reserved padding byte.
+        this.activeCam = 0x0; // Offset 0x889: Active camera mode (1 = active).
+        this.vibrationOn = 0x0; // Offset 0x88A: Controller vibration setting toggle (1 = enabled).
+        this.voicesOn = 0x0; // Offset 0x88B: Character voices audio setting (1 = enabled).
+        this.soundVolume = 0x0; // Offset 0x88C: Sound FX volume level setting.
+        this.musicVolume = 0x0; // Offset 0x88D: Music volume level setting.
+        this.stereoSpeaker = 0x0; // Offset 0x88E: Speaker output mode (1 = Stereo, 0 = Mono).
+        this.pad3 = new byte[109]; // Offset 0x88F: Extended structure padding (109 bytes).
+        this.checksum = 0x0; // Offset 0x8FC: Checksum sum value stored at the end of the save slot byte layout.
     }
 
     public void setChecksum() {

@@ -73,19 +73,4 @@ public class SaveTools {
         return sum;
     }
 
-    /**
-     * Converts a 4-byte segment from a byte array into a 32-bit signed integer using {@link ByteBuffer}.
-     * Supports configurable endianness (Little-Endian for PSX save formats vs. Big-Endian).
-     *
-     * @param bytes       Source byte array containing the sequence.
-     * @param offset      Starting index within the source array.
-     * @param isBigEndian {@code true} for Big-Endian, {@code false} for Little-Endian.
-     * @return Parsed 32-bit integer value.
-     * @throws IndexOutOfBoundsException If {@code offset} is invalid or array length is insufficient.
-     */
-    public static int bytesToInt(byte[] bytes, int offset, boolean isBigEndian) {
-        ByteBuffer buffer = ByteBuffer.wrap(bytes, offset, 4);
-        buffer.order(isBigEndian ? ByteOrder.BIG_ENDIAN : ByteOrder.LITTLE_ENDIAN);
-        return buffer.getInt();
-    }
 }
